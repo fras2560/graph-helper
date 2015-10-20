@@ -254,11 +254,11 @@ def combine_color_clique(clique, color):
             yield add_list(c, color, 0)
 
 import unittest
-from graph.helper import make_claw, make_diamond, make_cycle, join
+from algorithms.helper import make_claw, make_diamond, make_cycle, join
 class Test(unittest.TestCase):
 
     def setUp(self):
-        self.dcolor = Dcolor(make_claw())
+        self.dcolor = DenseColor(make_claw())
 
     def tearDown(self):
         pass
@@ -271,7 +271,7 @@ class Test(unittest.TestCase):
         self.assertEqual([[[0], [1]], [[2]], [[3]]], c)
         self.assertEqual(k, 2)
         self.assertEqual(i, 0)
-        self.dcolor = Dcolor(make_diamond())
+        self.dcolor = DenseColor(make_diamond())
         c, k, i = self.dcolor.create_clique_list()
         self.assertEqual([[[0], [1], [2]], [[3]]], c)
         self.assertEqual(k, 3)
@@ -281,20 +281,20 @@ class Test(unittest.TestCase):
         result = self.dcolor.color()
         expect = [[0], [1, 2, 3]]
         self.assertEqual(expect, result, "Coloring: Claw Case")
-        self.dcolor = Dcolor(make_diamond())
+        self.dcolor = DenseColor(make_diamond())
         result = self.dcolor.color()
         expect = [[0], [1], [2, 3]]
         self.assertEqual(expect, result, "Coloring: Diamond Case")
         g = nx.Graph()
         g.add_node(0)
         g.add_node(1)
-        self.dcolor = Dcolor(g)
+        self.dcolor = DenseColor(g)
         result = self.dcolor.color()
         expect = [[0, 1]]
         self.assertEqual(expect, result, "Coloring: Stable Set")
 
     def testColoringCritical(self):
-        self.dcolor = Dcolor(make_cycle(5))
+        self.dcolor = DenseColor(make_cycle(5))
         color = self.dcolor.color()
         expect = [[0], [1, 3], [2, 4]]
         self.assertEqual(len(color), 3)
@@ -302,7 +302,7 @@ class Test(unittest.TestCase):
         k1 = nx.Graph()
         k1.add_node(0)
         g = join(make_cycle(5), k1)
-        self.dcolor = Dcolor(g)
+        self.dcolor = DenseColor(g)
         color = self.dcolor.color()
         self.assertEqual(len(color), 4)
         expect = [[5], [0],  [1, 3], [2, 4]]
@@ -322,7 +322,7 @@ class Test(unittest.TestCase):
         g.add_edge(5, 8)
         g.add_edge(6, 8)
         g.add_edge(7, 9)
-        self.dcolor = Dcolor(g)
+        self.dcolor = DenseColor(g)
         color = self.dcolor.color()
         expect = [[1, 8, 9], [5, 4, 7], [2], [0, 3, 6]]
         self.assertEqual(self.dcolor.valid_coloring(color), True)
@@ -337,7 +337,7 @@ class Test(unittest.TestCase):
         g.add_edge(0,6)
         g.add_edge(3,6)
         g.add_edge(4,6)
-        self.dcolor = Dcolor(g)
+        self.dcolor = DenseColor(g)
         color = self.dcolor.color()
         expect = [[0, 3], [1, 4], [5, 6], [2]]
         self.assertEqual(self.dcolor.valid_coloring(color), True)
@@ -361,14 +361,14 @@ class Test(unittest.TestCase):
         for i in range(5, 100):
             g.add_node(i)
             g.add_edge(i - 1, i)
-        self.dcolor = Dcolor(g)
+        self.dcolor = DenseColor(g)
         color = self.dcolor.color()
         self.assertEqual(len(color), 3)
         self.assertEqual(self.dcolor.valid_coloring(color), True)
 
     def testColoringClique(self):
         g = make_cycle(3)
-        self.dcolor = Dcolor(g)
+        self.dcolor = DenseColor(g)
         color = self.dcolor.color()
         expect = [[0], [1], [2]]
         self.assertEqual(len(color), 3)

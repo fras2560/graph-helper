@@ -107,8 +107,8 @@ def k_vertex(g, subgraphs):
 import unittest
 import sys
 sys.path.append("..") # Adds higher directory to python modules path.
-from graph.helper import make_cycle, make_claw, make_co_claw
-from graph.helper import make_diamond, make_co_diamond, make_wheel
+from algorithms.helper import make_cycle, make_claw, make_co_claw
+from algorithms.helper import make_diamond, make_co_diamond, make_wheel
 from pprint import PrettyPrinter
 class tester(unittest.TestCase):
     def setUp(self):
