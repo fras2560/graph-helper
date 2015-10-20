@@ -4,10 +4,21 @@ A python package with algorithms to help with graph theory coloring and more.
 Algorithms
 -----------
 color: colors a graph
+	```sh
+	from algorithms import color
+	color(G)
+	```
 
 contains: checks if a graph contains an induced subgraph
-
+	```sh
+	from algorithms import contains
+	contains(G)
+	```
 critical: checks if the graph is critical
+	```sh
+	from algorithms import critical
+	critical(G)
+	```
 
 Install Dependencies
 -----------
