@@ -14,6 +14,7 @@ from color import coloring
 from dense_color import dense_color_wrapper
 from induced_subgraph import induced_subgraph
 from clique_cutset import clique_cutset as cutset
+from strong_stable_set import strong_stable_set as strong
 def color(G, logger=None, dense=False):
     '''
     a function to color the G with least amount of colors
@@ -83,6 +84,16 @@ def clique_cutset(G):
     Parameters:
         G: the graph to check (networkx)
     Returns:
-        a subgraph which forms a
+        a subgraph which forms a clique cutset (networkx)
     '''
     return cutset(G)
+
+
+def strong_stable_set(G):
+    '''
+    checks if G contains a strong stable set
+    Parameters:
+        G: the graph to check (networkx)
+    Returns:
+        a subgraph which forms a strong stable set (networkx)
+    '''

@@ -26,6 +26,12 @@ clique_cutset: check if a graph has a clique cutset
 	clique_cutset(G)
 	```
 
+strong_stable_set: check if a graph has a strong stable set
+	```sh
+	from algorithms import strong_stable_set
+	strong_stable_set(G)
+	```
+
 Install Dependencies
 -----------
 ```sh
