@@ -13,6 +13,7 @@ Version: 2014-09-17
 from color import coloring
 from dense_color import dense_color_wrapper
 from induced_subgraph import induced_subgraph
+from clique_cutset import clique_cutset as cutset
 def color(G, logger=None, dense=False):
     '''
     a function to color the G with least amount of colors
@@ -33,7 +34,7 @@ def color(G, logger=None, dense=False):
 
 def critical(G, logger=None, dense=False):
     '''
-    a method that finds if the graph is is_critical
+    a method that finds if the graph is critical
     Parameters:
         G: the graph to check (networkx)
         logger: an optional logger
@@ -72,8 +73,16 @@ def contains(G, H):
         G: the graph to check (networkx)
         H: the graph to check for (networkx)
     Returns:
-        a list of vertices that form the induced subgraph (list)
-        None if no induced subgraph exists
+        a subgraph which forms H (networkx)
     '''
     return induced_subgraph(G, H)
 
+def clique_cutset(G):
+    '''
+    checks if G contains a clique cutset
+    Parameters:
+        G: the graph to check (networkx)
+    Returns:
+        a subgraph which forms a
+    '''
+    return cutset(G)

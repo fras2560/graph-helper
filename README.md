@@ -19,6 +19,12 @@ critical: checks if the graph is critical
 	from algorithms import critical
 	critical(G)
 	```
+	
+clique_cutset: check if a graph has a clique cutset
+	```sh
+	from algorithms import clique_cutset
+	clique_cutset(G)
+	```
 
 Install Dependencies
 -----------
