@@ -13,64 +13,17 @@ Email:   lama3790@mylaurier.ca, fras2560@mylaurier.ca
 Version: 2015-10-21
 -------------------------------------------------------
 """
-from networkx import find_cliques, maximal_independent_set, graph_clique_number
-from networkx.exception import NetworkXUnfeasible
+from networkx import find_cliques, graph_clique_number
 from networkx import complement
-"""
--------------------------------------------------------
-This function finds the largest clique in a NetworkX graph.
-
-Preconditions: G, a NetworkX graph.
-
-Postconditions: This function returns a list of lists, where each list entry
-contains a list of vertices which comprise the largest clique(s)
-in G.
--------------------------------------------------------
-"""
-def findLargestCliques(G):
-    maximalCliques = list(find_cliques(G))
-    largestSoFar = len(maximalCliques[0])
-    for thisClique in maximalCliques:
-        if len(thisClique) > largestSoFar:
-            largestSoFar = len(thisClique)
-            
-    result = list()
-    for thisClique in maximalCliques:
-        if len(thisClique) == largestSoFar:
-            result.append(thisClique)
-    return result
-
-"""
--------------------------------------------------------
-This function takes a NetworkX graph G and returns a strong
-stable set belonging to G, if such a stable set exists, and
-returns None otherwise.
--------------------------------------------------------
-"""
-def FindStrongStableSet(G):
-    result = None
-    maximalCliques = findLargestCliques(G)
-    V = G.nodes()
-    for thisVertex in V:
-        #Find maximum stable sets which contain each vertex of G
-        try:
-            verticesToInclude = list()
-            verticesToInclude.append(thisVertex)
-            thisMaximalStableSet = maximal_independent_set(G, verticesToInclude)
-        except NetworkXUnfeasible:
-            thisMaximalStableSet = []
-        #Now determine if thisMaximumStableSet is strong, that is, meets every maximal clique
-        foundStrongStableSet = True
-        for thisMaximalClique in maximalCliques:
-            if set(thisMaximalStableSet).isdisjoint(set(thisMaximalClique)):
-                foundStrongStableSet = False
-                break
-        if foundStrongStableSet == True:
-            result = thisMaximalStableSet
-            break
-    return result
 
 def strong_stable_set(G):
+    '''
+    checks if G contains a strong stable set
+    Parameters:
+        G: the graph to check (networkx)
+    Returns:
+        a subgraph which forms a strong stable set (networkx)
+    '''
     clique = graph_clique_number(G)
     result = None
     for stable in stable_set(G):
