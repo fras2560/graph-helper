@@ -3,39 +3,40 @@ A python package with algorithms to help with graph theory coloring and more.
 
 Algorithms
 -----------
-color: colors a graph
-	```sh
-	from algorithms import color
-	color(G)
-	```
+`color`: colors a graph
 
-contains: checks if a graph contains an induced subgraph
-	```sh
-	from algorithms import contains
-	contains(G)
-	```
-critical: checks if the graph is critical
-	```sh
-	from algorithms import critical
-	critical(G)
-	```
+```python
+from algorithms import color
+>>> color(G)
+```
+
+`contains`: checks if a graph contains an induced subgraph
+```python
+from algorithms import contains
+>>> contains(G)
+```
+`critical`: checks if the graph is critical
+```python
+from algorithms import critical
+>>> critical(G)
+```
 	
-clique_cutset: check if a graph has a clique cutset
-	```sh
-	from algorithms import clique_cutset
-	clique_cutset(G)
-	```
+`clique_cutset`: check if a graph has a clique cutset
+```python
+from algorithms import clique_cutset
+>>> clique_cutset(G)
+```
 
-strong_stable_set: check if a graph has a strong stable set
-	```sh
-	from algorithms import strong_stable_set
-	strong_stable_set(G)
-	```
+`strong_stable_set`: check if a graph has a strong stable set
+```python
+from algorithms import strong_stable_set
+>>> strong_stable_set(G)
+```
 
 Install Dependencies
 -----------
 ```sh
-	pip install networkx
+pip install networkx
 ```
 
 
